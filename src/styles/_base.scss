@@ -1,0 +1,42 @@
+input {
+    border: 1px solid grey;
+    border-radius: 4px;
+    color: $text-grey;
+    font-size: 16px;
+    height: 40px;
+    padding: 6px 10px;
+    width: 100%;
+}
+
+.title {
+    color: $primary;
+    font-size: 29px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: $text-grey;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+// Buttons
+
+.btn-primary {
+    background-color: $primary;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px 30px;
+    border-radius: 6px;
+}
+
+.btn-tertiary {
+    background-color: transparent;
+    color: $text-grey;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 6px;
+    border: 1px solid $primary;
+}
