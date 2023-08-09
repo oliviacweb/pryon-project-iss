@@ -8,10 +8,10 @@ const ProfilePage: React.FC = () => {
         <Layout>
             {/* TODO: Add Username */}
             <h2 className="title">Hi There, {userProfile?.displayName}!</h2>
+            <h2 className="subtitle">Profile Information</h2>
             {/* Show user data */}
-            <h2 className="mt-6 subtitle">Profile Information:</h2>
-            <div className="flex gap-6 items-center mt-5">
-                <img src={userProfile?.photoURL} alt="Profile" className="w-24 h-24 rounded-full" referrerPolicy="no-referrer" />
+            <div className="flex gap-8 items-center mt-6 shadow w-max p-12 rounded-2xl">
+                <img src={userProfile?.photoURL} alt="Profile" className="w-40 h-40 rounded-full" referrerPolicy="no-referrer" />
                 <div>
                     <p className="mt-2 text-sm">Name: <span className="font-bold">{userProfile?.displayName}</span></p>
                     <p className="mt-2 text-sm">Email: <span className="font-bold">{userProfile?.email}</span></p>

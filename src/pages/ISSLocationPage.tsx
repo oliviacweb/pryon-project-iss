@@ -24,7 +24,7 @@ export default function ISSLocationPage() {
     <Layout>
       <h1 className="title">ISS Location</h1>
       <p className="subtitle">
-        The current location of the International Space Station.
+        The current location of the International Space Station
       </p>
 
       {/* Display the latitude and longitude of the ISS on a map. */}
