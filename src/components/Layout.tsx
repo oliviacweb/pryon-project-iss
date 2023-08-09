@@ -24,7 +24,6 @@ export default function Layout({ children }: Props) {
     return (
         <div className={styles.layout}>
             <Navbar />
-            {children}
             <div className={styles.contentWrapper}>
                 <SideBar />
                 <div className={styles.content}>
