@@ -26,6 +26,7 @@ export default function AstronautsPage({ }: Props) {
                         <th className="border px-4 py-2 bg-blue-50">Astronaut Name</th>
                         <th className="border px-4 py-2 bg-blue-50">Craft</th>
                     </tr>
+                    {/* Map through astronauts retrieved by fetch */}
                     {astronauts.map((astronaut: any) => (
                         <tr key={astronaut.name}>
                             <td className="border px-6 py-3 text-center">{astronaut.name}</td>
