@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../redux/slices/authSlice';
+import { RootState } from '../redux/store';
 import loginImage from '../assets/images/login-astronaut.png';
+import { Navigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -13,6 +17,11 @@ const LoginPage: React.FC = () => {
         // TODO: handle authentication
         dispatch(login());
     };
+
+    // Redirect to Profile Page if authenticated
+    if (isAuthenticated) {
+        return <Navigate to="/profile" replace={true} />;
+    }
 
     return (
         <div className="flex">
