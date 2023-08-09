@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Layout from "../components/Layout";
 
-type Props = {};
 
-export default function AstronautsPage({ }: Props) {
+
+export default function AstronautsPage() {
     const [astronauts, setAstronauts] = React.useState([]);
     useEffect(() => {
         fetch("http://api.open-notify.org/astros.json")

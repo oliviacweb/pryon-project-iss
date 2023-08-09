@@ -23,7 +23,7 @@ const ISSMap: React.FC<MapMarkerProps> = ({ lat, lng }) => {
         googleMapsApiKey: "AIzaSyBplRnJgnPDSAeZ2-e1vWqjyo7s4CeR0bE"
     });
 
-    const [map, setMap] = React.useState<MapMarkerProps | null>(null);
+    const [, setMap] = React.useState<MapMarkerProps | null>(null);
 
     // https://www.npmjs.com/package/@react-google-maps/api
     const onLoad = React.useCallback((map: any) => {
