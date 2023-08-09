@@ -3,7 +3,7 @@ import logo from '../assets/images/logo.png';
 import HamburgerMenu from './HamburgerMenu';
 import styles from '../styles/components/Navbar.module.scss';
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
     return (
         <div className={styles.navbar}>
             <img src={logo} alt="Logo" className="w-12 h-12" />
@@ -11,3 +11,5 @@ export default function Navbar() {
         </div>
     );
 }
+
+export default Navbar

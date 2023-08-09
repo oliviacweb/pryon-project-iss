@@ -2,8 +2,7 @@ import React from 'react';
 import Layout from "../components/Layout";
 import AstronautsTable from "../components/AstronautsTable";
 
-export default function AstronautsPage() {
-
+const AstronautsPage: React.FC = () => {
     return (
         <Layout>
             <h1 className="title">Astronauts</h1>
@@ -16,3 +15,5 @@ export default function AstronautsPage() {
         </Layout>
     );
 };
+
+export default AstronautsPage;

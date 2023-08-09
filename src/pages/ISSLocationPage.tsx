@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from "../components/Layout";
 import Globe from '../components/Globe';
 
-export default function ISSLocationPage() {
+const ISSLocationPage: React.FC = () => {
   return (
     <Layout>
       <h1 className="title">ISS Location</h1>
@@ -15,3 +15,5 @@ export default function ISSLocationPage() {
     </Layout>
   );
 };
+
+export default ISSLocationPage;

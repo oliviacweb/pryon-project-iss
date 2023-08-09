@@ -30,7 +30,7 @@ const links = [
     }
 ];
 
-export default function SideBar() {
+const SideBar: React.FC = () => {
     const location = useLocation();
     const dispatch = useDispatch();
 
@@ -62,3 +62,5 @@ export default function SideBar() {
         </div>
     );
 }
+
+export default SideBar;

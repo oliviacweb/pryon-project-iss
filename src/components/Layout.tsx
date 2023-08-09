@@ -11,7 +11,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-export default function Layout({ children }: Props) {
+const Layout: React.FC<Props> = ({ children }) => {
     // Navigate to login page if not authenticated
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
@@ -33,3 +33,5 @@ export default function Layout({ children }: Props) {
         </div>
     );
 }
+
+export default Layout;

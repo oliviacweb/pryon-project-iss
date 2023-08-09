@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import { useSelector } from 'react-redux';
 const ProfilePage: React.FC = () => {
     const userProfile = useSelector((state: any) => state.auth.userProfile);
-
     return (
         <Layout>
             {/* TODO: Add Username */}
