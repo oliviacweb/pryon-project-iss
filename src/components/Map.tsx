@@ -43,13 +43,9 @@ const ISSMap: React.FC<MapMarkerProps> = ({ lat, lng }) => {
             onUnmount={onUnmount}
             mapTypeId="satellite"
         >
-            {/* Marker */}
             <>
-                <Marker
-                    position={{ lat: lat, lng: lng }}
-                />
+                <Marker position={{ lat, lng }} />
             </>
-
         </GoogleMap>
     ) : <></>;
 };
