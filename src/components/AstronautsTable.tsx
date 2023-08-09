@@ -6,12 +6,16 @@ import { fetchAstronauts } from '../services/api';
 
 const AstronautsTable: React.FC = () => {
     const [astronauts, setAstronauts] = useState([]);
+    const [error, setError] = useState<string | null>(null);  // New state for error
+
     useEffect(() => {
         const getAstronauts = async () => {
             try {
                 const data = await fetchAstronauts();
                 setAstronauts(data);
+                setError(null);  // Clear any previous error on success
             } catch (error) {
+                setError(`Error: ${error}`);
                 toast.error(`Error:${error}`, {
                     toastId: "AstronautsPageError"
                 });
@@ -21,6 +25,13 @@ const AstronautsTable: React.FC = () => {
         getAstronauts();
     }, []);
 
+    // If there's an error, display error message
+    if (error) return <div className="font-bold text-sm">
+        <p>Sorry there was an error fetching astronauts..</p>
+        <p className="text-red-500">{error}</p>
+    </div>;
+
+    // No error but astronauts data hasn't loaded, show the loader
     if (astronauts.length === 0) return <Loader />;
 
     return (
@@ -29,8 +40,8 @@ const AstronautsTable: React.FC = () => {
                 <tr className="bg-gradient-to-r from-[#04273d] to-[#031622]">
                     <th className="border-r px-4 py-2 text-white text-left  rounded"><span className=" flex gap-3 items-center"><FaUserAstronaut /> Astronaut Name</span></th>
                     <th className="border-r px-4 py-2 text-white text-left rounded"><span className=" flex gap-3 items-center"><FaRocket />  Craft</span></th>
-                </tr >
-            </thead >
+                </tr>
+            </thead>
             <tbody>
                 {/* Map through astronauts retrieved by fetch */}
                 {astronauts.map((astronaut: any, index: number) => (
@@ -40,7 +51,7 @@ const AstronautsTable: React.FC = () => {
                     </tr>
                 ))}
             </tbody>
-        </table >
+        </table>
     );
 };
 

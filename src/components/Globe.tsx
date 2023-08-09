@@ -13,17 +13,21 @@ interface MapMarkerProps {
 
 const MyGlobe: React.FC = () => {
     const [location, setLocation] = React.useState<MapMarkerProps | null>(null);
+    const [error, setError] = React.useState<string | null>(null);
 
     const [dimensions] = React.useState({
         width: window.innerWidth - 290,
         height: window.innerHeight - 305
     });
+
     useEffect(() => {
         const fetchLocationAndUpdateState = async () => {
             try {
                 const locationData = await fetchISSLocation();
                 setLocation(locationData);
+                setError(null);  // Clear any previous error on success
             } catch (error) {
+                setError(`Error: ${error}`);
                 toast.error(`Error: ${error}`, {
                     toastId: "ISSLocationPageError"
                 });
@@ -37,27 +41,33 @@ const MyGlobe: React.FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-    if (!location) {
-        return <Loader />;
-    }
+    // If there's an error, display the error message
+    if (error) return <div className="font-bold text-sm">
+        <p>Sorry there was an error fetching ISS Location..</p>
+        <p className="text-red-500">{error}</p>
+    </div>;
 
-    return <Globe
-        waitForGlobeReady={true}
-        width={dimensions.width}
-        height={dimensions.height}
-        backgroundImageUrl={spaceImage}
-        globeImageUrl={earthImage}
-        // Ring marker
-        ringsData={[
-            {
-                lat: location.latitude,
-                lng: location.longitude,
-            }
-        ]}
-        ringAltitude={0.2}
-        ringMaxRadius={4}
-    />;
+    // No error but location data hasn't loaded, show the loader
+    if (!location) return <Loader />;
+
+    return (
+        <Globe
+            waitForGlobeReady={true}
+            width={dimensions.width}
+            height={dimensions.height}
+            backgroundImageUrl={spaceImage}
+            globeImageUrl={earthImage}
+            // Ring marker
+            ringsData={[
+                {
+                    lat: location.latitude,
+                    lng: location.longitude,
+                }
+            ]}
+            ringAltitude={0.2}
+            ringMaxRadius={4}
+        />
+    );
 };
-
 
 export default MyGlobe;
