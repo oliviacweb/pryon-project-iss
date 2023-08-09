@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { signInWithGoogle } from '../../services/auth'
+import { createSlice } from '@reduxjs/toolkit';
 
 interface UserProfile {
     displayName: string | null

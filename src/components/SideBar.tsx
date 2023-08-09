@@ -5,9 +5,7 @@ import { logout } from '../redux/slices/authSlice';
 import { firebaseSignOut } from '../services/auth';
 import styles from '../styles/components/SideBar.module.scss';
 
-type Props = {};
-
-export default function SideBar({ }: Props) {
+export default function SideBar() {
     const dispatch = useDispatch();
 
     const handleLogout = async () => {
