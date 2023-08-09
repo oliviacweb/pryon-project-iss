@@ -1,9 +1,29 @@
-@import '../settings';
-
+@import "../settings";
 .sidebar {
     width: 250px;
     padding: $defaultPadding;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 20px;
+    color: $primary;
+    transition: color 0.06s ease-in-out;
+    &:hover {
+        color: $secondary;
+    }
+    svg {
+        margin-right: 16px;
+    }
+}
+
+.activeLink {
+    color: $secondary;
 }
