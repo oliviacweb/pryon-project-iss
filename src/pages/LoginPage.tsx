@@ -22,8 +22,7 @@ const LoginPage: React.FC = () => {
             dispatch(login(result));
             toast.success(`Welcome, ${result.displayName}!`);
         } catch (error) {
-            console.log(error);
-            toast.error("Try monkey and banana!");
+            toast.error("Invalid credentials. Try monkey and banana!");
         }
     };
 
@@ -33,7 +32,6 @@ const LoginPage: React.FC = () => {
             dispatch(login(result));
             toast.success(`Welcome, ${result.displayName}!`);
         } catch (error) {
-            console.log(error);
             toast.error("Something went wrong, try again!");
         }
     };
@@ -75,12 +73,13 @@ const LoginPage: React.FC = () => {
                     <button type="submit" className="btn-primary mt-5 w-full">Login</button>
                 </form>
 
-                {/* Google and Facebook Login */}
+                 {/* Google Login */}
                 <div>
                     <p className="subtitle mb-4">- Or Sign In With</p>
                     <div className="flex gap-3">
                         <button className="btn-tertiary flex gap-2 items-center" onClick={handleSignInWithGoogle}>
-                            <RiGoogleFill className="text-2xl text-red-600" /> Google</button>
+                            <RiGoogleFill className="text-2xl text-red-600" /> Google
+                            </button>
                         {/* <button className="btn-tertiary" onClick={handleSubmit}>Facebook</button> */}
                     </div>
                 </div>

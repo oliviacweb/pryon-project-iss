@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from "../components/Layout";
-
+import { toast } from 'react-toastify';
 
 
 export default function AstronautsPage() {
@@ -10,6 +10,10 @@ export default function AstronautsPage() {
             .then(response => response.json())
             .then(data => {
                 setAstronauts(data.people);
+            }).catch(error => {
+                toast.error(`Error:${error.message}`, {
+                    toastId: "AstronautsPageError"
+                });
             });
     }, []);
 

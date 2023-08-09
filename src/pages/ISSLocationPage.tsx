@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from "../components/Layout";
 import Map from '../components/Map';
+import { toast } from 'react-toastify';
 
 export default function ISSLocationPage() {
     const [location, setLocation] = React.useState({
@@ -12,6 +13,10 @@ export default function ISSLocationPage() {
             .then(response => response.json())
             .then(data => {
                 setLocation(data.iss_position);
+            }).catch(error => {
+                toast.error(`Error:${error.message}`, {
+                    toastId: "ISSLocationPageError"
+                });
             });
     }, []);
     return (
