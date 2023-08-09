@@ -5,6 +5,7 @@ import { RootState } from '../redux/store';
 import loginImage from '../assets/images/login-astronaut.png';
 import { Navigate } from "react-router-dom";
 import { signInWithGoogle, signInWithEmail } from '../services/auth';
+import { RiGoogleFill } from 'react-icons/ri';
 import { toast } from "react-toastify";
 
 const LoginPage: React.FC = () => {
@@ -77,8 +78,9 @@ const LoginPage: React.FC = () => {
                 <div>
                     <p className="subtitle mb-4">- Or Sign In With</p>
                     <div className="flex gap-3">
-                    <button className="btn-tertiary" onClick={handleSignInWithGoogle}>Google</button>
-                    {/* <button className="btn-tertiary" onClick={handleSubmit}>Facebook</button> */}
+                        <button className="btn-tertiary flex gap-2 items-center" onClick={handleSignInWithGoogle}>
+                            <RiGoogleFill className="text-2xl text-red-600" /> Google</button>
+                        {/* <button className="btn-tertiary" onClick={handleSubmit}>Facebook</button> */}
                     </div>
                 </div>
 

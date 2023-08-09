@@ -29,6 +29,10 @@ input {
     font-weight: bold;
     padding: 16px 30px;
     border-radius: 6px;
+    transition: background-color 0.15s ease-in-out;
+    &:hover {
+        background-color: lighten($primary, 10%);
+    }
 }
 
 .btn-tertiary {
@@ -39,4 +43,9 @@ input {
     padding: 10px 30px;
     border-radius: 6px;
     border: 1px solid $primary;
+    transition: all 0.15s ease-in-out;
+    &:hover {
+        background-color: $primary;
+        color: white;
+    }
 }
