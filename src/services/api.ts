@@ -6,3 +6,13 @@ export const fetchISSLocation = () => {
         throw error
       })
   }
+  
+  export const fetchAstronauts = async () => {
+    try {
+      const response = await fetch('http://api.open-notify.org/astros.json')
+      const data = await response.json()
+      return data.people
+    } catch (error) {
+      throw error
+    }
+  }
