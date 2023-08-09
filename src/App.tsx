@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { RootState } from './redux/store';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
+import AstronautsPage from "./pages/AstronautsPage";
+import IssLocationPage from "./pages/ISSLocationPage";
+
 
 const App: React.FC = () => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
@@ -11,8 +14,12 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={!isAuthenticated ? <LoginPage /> : <ProfilePage />} />
-        <Route path="/profile" element={isAuthenticated ? <ProfilePage /> : <LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/astronauts" element={<AstronautsPage />} />
+        <Route path="/iss-location" element={<IssLocationPage />} />
+
+        {/* Defaults to Login Page */}
+        <Route path="*" element={<LoginPage />} />
       </Routes>
     </Router>
   );

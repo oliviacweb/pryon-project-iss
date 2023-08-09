@@ -18,7 +18,7 @@ export default function Layout({ children }: Props) {
     if (!isAuthenticated) {
         // react-router-dom
         // https://reactrouter.com/web/api/Hooks
-        <Navigate to="/dashboard" replace={true} />;
+        return <Navigate to="/" replace={true} />;
     }
 
     return (
