@@ -6,6 +6,11 @@ Welcome to the ISS and Astronauts App, a React project designed to display infor
 
 The app fetches data from an external API and presents a table with astronaut names and the crafts they are currently aboard. It utilizes Redux for state management, Firebase for authentication, and several other utilities for a seamless user experience.
 
+## Images
+<img href="https://imgur.com/CDtqb9N"><img src="https://i.imgur.com/CDtqb9N.png" title="source: imgur.com" />
+<img href="https://imgur.com/ROmcedo"><img src="https://i.imgur.com/ROmcedo.png" title="source: imgur.com" />
+<img href="https://imgur.com/UDlQvcG"><img src="https://i.imgur.com/UDlQvcG.png" title="source: imgur.com" />
+
 ## Getting Started
 
 ### Prerequisites
@@ -55,3 +60,4 @@ Major dependencies that the project utilizes:
 ## Improvements
 - Add more authentication options
 - Add more tests
+- deploy and add CI/CD
