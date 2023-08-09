@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../redux/slices/authSlice';
 import { RootState } from '../redux/store';
 import { Navigate } from "react-router-dom";
-import { signInWithGoogle, signInWithFacebook, signInWithEmail } from '../services/auth';
+import { signInWithGoogle, signInWithEmail } from '../services/auth';
 import { RiFacebookFill, RiGoogleFill } from 'react-icons/ri';
 import { toast } from "react-toastify";
 import styles from '../styles/pages/LoginPage.module.scss';
@@ -36,15 +36,16 @@ const LoginPage: React.FC = () => {
         }
     };
 
-    const handleSignInWitFacebook = async () => {
-        try {
-            const result = await signInWithFacebook();
-            dispatch(login(result));
-            toast.success(`Welcome, ${result.displayName}!`);
-        } catch (error) {
-            toast.error("Something went wrong, try again!");
-        }
-    };
+    // const handleSignInWitFacebook = async () => {
+    //     try {
+    //         const result = await signInWithFacebook();
+    //         dispatch(login(result));
+    //         toast.success(`Welcome, ${result.displayName}!`);
+    //     } catch (error) {
+    //         toast.error("Something went wrong, try again!");
+    //         console.log(error)
+    //     }
+    // };
 
 
     // Redirect to Profile Page if authenticated
@@ -94,9 +95,9 @@ const LoginPage: React.FC = () => {
                         </button>
 
                         {/* Facebook Login */}
-                        <button className="btn-tertiary flex gap-2 items-center" onClick={handleSignInWitFacebook}>
+                        {/* <button className="btn-tertiary flex gap-2 items-center" onClick={handleSignInWitFacebook}>
                             <RiFacebookFill className="text-2xl text-blue-600" /> Facebook
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

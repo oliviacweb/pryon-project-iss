@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import Layout from "../components/Layout";
-import Map from '../components/Map';
 import { toast } from 'react-toastify';
+import Globe from '../components/Globe';
+import Loader from '../components/Loader';
+
+type ISSPosition = {
+  latitude: number;
+  longitude: number;
+};
+
 
 export default function ISSLocationPage() {
-  const [location, setLocation] = React.useState({
-    latitude: 12.1927,
-    longitude: -109.7714
-  });
-  useEffect(() => {
+  const [location, setLocation] = React.useState<ISSPosition | null>(null);
+
+  const fetchISSLocation = () => {
     fetch("http://api.open-notify.org/iss-now.json")
       .then(response => response.json())
       .then(data => {
@@ -18,7 +23,18 @@ export default function ISSLocationPage() {
           toastId: "ISSLocationPageError"
         });
       });
+  };
+
+  useEffect(() => {
+    fetchISSLocation();
+    // Fetch the ISS location every 5 seconds
+    const interval = setInterval(() => {
+      fetchISSLocation();
+    }, 5000);
+    // Clear the interval when the component unmounts
+    return () => clearInterval(interval);
   }, []);
+
 
   return (
     <Layout>
@@ -26,13 +42,9 @@ export default function ISSLocationPage() {
       <p className="subtitle">
         The current location of the International Space Station
       </p>
-
-      {/* Display the latitude and longitude of the ISS on a map. */}
-      <Map
-        lat={location.latitude}
-        lng={location.longitude}
-      />
-
+      <div className="mt-6">
+        {location ? <Globe lat={location.latitude} lng={location.longitude} /> : <Loader />}
+      </div>
     </Layout>
   );
-}
+};
