@@ -1,24 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { signInWithGoogle } from '../../services/auth'
+
+interface UserProfile {
+    displayName: string | null
+    email: string | null
+    photoURL: string | null
+}
 
 interface AuthState {
-  isAuthenticated: boolean
+    isAuthenticated: boolean
+    userProfile: UserProfile | null
 }
 
 const initialState: AuthState = {
-  isAuthenticated: false
+    isAuthenticated: false,
+    userProfile: null
 }
 
 export const authSlice = createSlice({
-  name: 'auth',
-  initialState,
-  reducers: {
-    login: state => {
-      state.isAuthenticated = true
-    },
-    logout: state => {
-      state.isAuthenticated = false
+    name: 'auth',
+    initialState,
+    reducers: {
+        login: (state, action) => {
+            state.isAuthenticated = true
+            state.userProfile = action.payload
+        },
+        logout: state => {
+            state.isAuthenticated = false
+            state.userProfile = null
+        }
     }
-  }
 })
 
 export const { login, logout } = authSlice.actions

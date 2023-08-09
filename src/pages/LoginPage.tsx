@@ -4,18 +4,33 @@ import { login } from '../redux/slices/authSlice';
 import { RootState } from '../redux/store';
 import loginImage from '../assets/images/login-astronaut.png';
 import { Navigate } from "react-router-dom";
+import { signInWithGoogle, signInWithEmail } from '../services/auth';
 
 const LoginPage: React.FC = () => {
+    const dispatch = useDispatch();
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
 
-    const handleSubmit = (e: React.FormEvent) => {
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: handle authentication
-        dispatch(login());
+        try {
+            const result = await signInWithEmail(username, password);
+            dispatch(login(result));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleSignInWithGoogle = async () => {
+        try {
+            const result = await signInWithGoogle();
+            dispatch(login(result));
+        } catch (error) {
+            console.log(error);
+        }
+
     };
 
     // Redirect to Profile Page if authenticated
@@ -57,9 +72,8 @@ const LoginPage: React.FC = () => {
                 <div>
                     <p className="subtitle mb-4">- Or Sign In With</p>
                     <div className="flex gap-3">
-                        <button className="btn-tertiary" onClick={handleSubmit}>
-                            Google</button>
-                        <button className="btn-tertiary" onClick={handleSubmit}>Facebook</button>
+                    <button className="btn-tertiary" onClick={handleSignInWithGoogle}>Google</button>
+                    {/* <button className="btn-tertiary" onClick={handleSubmit}>Facebook</button> */}
                     </div>
                 </div>
 
