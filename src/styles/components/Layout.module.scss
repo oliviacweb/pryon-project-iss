@@ -1,4 +1,17 @@
-main {
+@import "../settings";
+
+.layout {
+    height: 100vh;
+}
+
+.contentWrapper {
     display: flex;
-    flex-direction: column;
+    height: calc(100vh - $navbarHeight);
+}
+
+.content {
+    padding: $defaultPadding;
+    width: 100%;
+    max-height: calc(100vh - $navbarHeight);
+    overflow-y: auto;
 }

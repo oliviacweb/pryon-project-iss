@@ -4,6 +4,7 @@ import { RootState } from '../redux/store';
 import { Navigate } from "react-router-dom";
 import styles from '../styles/components/Layout.module.scss';
 import Navbar from "./Navbar";
+import SideBar from "./SideBar";
 
 
 type Props = {
@@ -21,9 +22,15 @@ export default function Layout({ children }: Props) {
     }
 
     return (
-        <div className={styles.main}>
+        <div className={styles.layout}>
             <Navbar />
             {children}
+            <div className={styles.contentWrapper}>
+                <SideBar />
+                <div className={styles.content}>
+                    {children}
+                </div>
+            </div>
         </div>
     );
 }

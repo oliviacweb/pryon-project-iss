@@ -13,9 +13,9 @@ const ProfilePage: React.FC = () => {
 
     return (
         <Layout>
-            <h2>Profile Page</h2>
-            <p>Welcome, Traveler!</p>
-            <button onClick={handleLogout}>
+            {/* TODO: Add Username */}
+            <h2 className="mb-4">Hi there, "Username"!</h2>
+            <button onClick={handleLogout} className="btn-primary">
                 Logout
             </button>
         </Layout>
