@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
         <div className="flex w-screen h-screen">
             {/* Astronaut Image */}
             <div className={styles.image} />
-            <div className="p-20 w-3xl flex flex-col justify-center">
+            <div className="p-10 md:p-20 w-3xl flex flex-col justify-center">
                 <h1 className="title">Welcome, Space Traveler!</h1>
                 <p className="subtitle">Please Sign In To Continue</p>
                 {/* Local Email Login Form */}

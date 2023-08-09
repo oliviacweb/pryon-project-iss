@@ -10,8 +10,14 @@
 }
 
 .content {
-    padding: $defaultPadding;
+    padding: $mobilePadding;
     width: 100%;
     max-height: calc(100vh - $navbarHeight);
     overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .content {
+        padding: $defaultPadding;
+    }
 }

@@ -10,7 +10,7 @@ const ProfilePage: React.FC = () => {
             <h2 className="title">Hi There, {userProfile?.displayName}!</h2>
             <h2 className="subtitle">Profile Information</h2>
             {/* Show user data */}
-            <div className="flex gap-8 items-center mt-6 shadow w-max p-12 rounded-2xl">
+            <div className="flex flex-col md:flex-row gap-8 items-center mt-6 shadow md:w-max p-12 rounded-2xl">
                 <img src={userProfile?.photoURL} alt="Profile" className="w-40 h-40 rounded-full" referrerPolicy="no-referrer" />
                 <div>
                     <p className="mt-2 text-sm">Name: <span className="font-bold">{userProfile?.displayName}</span></p>

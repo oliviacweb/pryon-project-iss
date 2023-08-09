@@ -40,7 +40,7 @@ export default function SideBar() {
         toast.success('Logged out successfully');
     };
     return (
-        <div className={styles.sidebar}>
+        <div className={`${styles.sidebar} hidden md:flex`}>
             {/* Links */}
             {links.map((link, index) => (
                 <Link

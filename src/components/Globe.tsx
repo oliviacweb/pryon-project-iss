@@ -15,9 +15,11 @@ const MyGlobe: React.FC = () => {
     const [location, setLocation] = React.useState<MapMarkerProps | null>(null);
     const [error, setError] = React.useState<string | null>(null);
 
+    const isDesktop = window.innerWidth >= 1024;  // Determine if it's desktop
+
     const [dimensions] = React.useState({
-        width: window.innerWidth - 290,
-        height: window.innerHeight - 305
+        width: isDesktop ? window.innerWidth - 290 : window.innerWidth - 40,
+        height: isDesktop ? window.innerHeight - 305 : window.innerHeight
     });
 
     useEffect(() => {
