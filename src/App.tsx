@@ -1,10 +1,20 @@
 import React from 'react';
-import LoginPage from "./pages/LoginPage";
+import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RootState } from './redux/store';
+import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
 
+const App: React.FC = () => {
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
-function App() {
   return (
-    <LoginPage />
+    <Router>
+    <Routes>
+      <Route path="/" element={!isAuthenticated ? <LoginPage /> : <ProfilePage />} />
+      <Route path="/profile" element={isAuthenticated ? <ProfilePage /> : <LoginPage />} />
+    </Routes>
+  </Router>
   );
 }
 
