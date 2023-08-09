@@ -1,7 +1,6 @@
 // src/services/auth.ts
 import { auth } from '../firebaseConfig'
 import {
-  FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
   signOut

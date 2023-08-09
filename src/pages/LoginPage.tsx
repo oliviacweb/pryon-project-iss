@@ -4,7 +4,7 @@ import { login } from '../redux/slices/authSlice';
 import { RootState } from '../redux/store';
 import { Navigate } from "react-router-dom";
 import { signInWithGoogle, signInWithEmail } from '../services/auth';
-import { RiFacebookFill, RiGoogleFill } from 'react-icons/ri';
+import { RiGoogleFill } from 'react-icons/ri';
 import { toast } from "react-toastify";
 import styles from '../styles/pages/LoginPage.module.scss';
 
