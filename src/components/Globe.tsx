@@ -1,5 +1,8 @@
 import React from 'react';
 import Globe from 'react-globe.gl';
+import earthImage from '../assets/images/earth-blue-marble.jpg';
+import spaceImage from '../assets/images/night-sky.png';
+
 
 interface MapMarkerProps {
     lat: number;
@@ -18,8 +21,8 @@ const MyGlobe: React.FC<MapMarkerProps> = ({ lat, lng }) => {
         waitForGlobeReady={true}
         width={dimensions.width}
         height={dimensions.height}
-        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        backgroundImageUrl={spaceImage}
+        globeImageUrl={earthImage}
         ringsData={[
             {
                 lat: lat,
