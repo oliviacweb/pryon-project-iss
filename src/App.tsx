@@ -6,22 +6,26 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import AstronautsPage from "./pages/AstronautsPage";
 import IssLocationPage from "./pages/ISSLocationPage";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const App: React.FC = () => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/astronauts" element={<AstronautsPage />} />
-        <Route path="/iss-location" element={<IssLocationPage />} />
-
-        {/* Defaults to Login Page */}
-        <Route path="*" element={<LoginPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <ToastContainer />
+      <Router>
+        <Routes>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/astronauts" element={<AstronautsPage />} />
+          <Route path="/iss-location" element={<IssLocationPage />} />
+          {/* Defaults to Login Page */}
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

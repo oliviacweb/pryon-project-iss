@@ -9,6 +9,7 @@ import {
     RiRadarFill,
     RiLogoutBoxFill
 } from 'react-icons/ri';
+import { toast } from "react-toastify";
 import styles from '../styles/components/SideBar.module.scss';
 
 const links = [
@@ -36,6 +37,7 @@ export default function SideBar() {
     const handleLogout = async () => {
         await firebaseSignOut();
         dispatch(logout());
+        toast.success('Logged out successfully');
     };
     return (
         <div className={styles.sidebar}>

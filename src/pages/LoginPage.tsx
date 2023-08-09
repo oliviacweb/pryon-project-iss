@@ -5,6 +5,7 @@ import { RootState } from '../redux/store';
 import loginImage from '../assets/images/login-astronaut.png';
 import { Navigate } from "react-router-dom";
 import { signInWithGoogle, signInWithEmail } from '../services/auth';
+import { toast } from "react-toastify";
 
 const LoginPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -18,8 +19,10 @@ const LoginPage: React.FC = () => {
         try {
             const result = await signInWithEmail(username, password);
             dispatch(login(result));
+            toast.success(`Welcome, ${result.displayName}!`);
         } catch (error) {
             console.log(error);
+            toast.error("Try monkey and banana!");
         }
     };
 
@@ -27,8 +30,10 @@ const LoginPage: React.FC = () => {
         try {
             const result = await signInWithGoogle();
             dispatch(login(result));
+            toast.success(`Welcome, ${result.displayName}!`);
         } catch (error) {
             console.log(error);
+            toast.error("Something went wrong, try again!");
         }
 
     };
