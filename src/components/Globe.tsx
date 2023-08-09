@@ -4,6 +4,7 @@ import earthImage from '../assets/images/earth-blue-marble.jpg';
 import spaceImage from '../assets/images/night-sky.png';
 import { toast } from 'react-toastify';
 import Loader from "./Loader";
+import { fetchISSLocation } from '../services/api';
 
 interface MapMarkerProps {
     latitude: number;
@@ -17,25 +18,21 @@ const MyGlobe: React.FC = () => {
         width: window.innerWidth - 290,
         height: window.innerHeight - 305
     });
-
-    const fetchISSLocation = () => {
-        fetch("http://api.open-notify.org/iss-now.json")
-            .then(response => response.json())
-            .then(data => {
-                setLocation(data.iss_position);
-            }).catch(error => {
-                toast.error(`Error:${error.message}`, {
+    useEffect(() => {
+        const fetchLocationAndUpdateState = async () => {
+            try {
+                const locationData = await fetchISSLocation();
+                setLocation(locationData);
+            } catch (error) {
+                toast.error(`Error: ${error}`, {
                     toastId: "ISSLocationPageError"
                 });
-            });
-    };
+            }
+        };
 
-    useEffect(() => {
-        fetchISSLocation();
+        fetchLocationAndUpdateState();
         // Fetch the ISS location every 5 seconds
-        const interval = setInterval(() => {
-            fetchISSLocation();
-        }, 5000);
+        const interval = setInterval(fetchLocationAndUpdateState, 5000);
         // Clear the interval when the component unmounts
         return () => clearInterval(interval);
     }, []);
