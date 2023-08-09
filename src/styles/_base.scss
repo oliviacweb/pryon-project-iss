@@ -1,20 +1,36 @@
+// Fonts
+@import "@fontsource/montserrat/800.css";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/raleway/700.css";
+@import "@fontsource/raleway/400.css";
+
+p {
+    font-family: "Raleway", sans-serif;
+}
+
 input {
+    font-family: "Montserrat", sans-serif;
     border: 1px solid grey;
+    font-weight: 400;
     border-radius: 4px;
-    color: $text-grey;
-    font-size: 16px;
+    font-size: 14px;
     height: 40px;
     padding: 6px 10px;
     width: 100%;
+    &::placeholder {
+        color: $text-grey;
+    }
 }
 
 .title {
+    font-family: "Montserrat", sans-serif;
     color: $primary;
     font-size: 29px;
     font-weight: bold;
 }
 
 .subtitle {
+    font-family: "Raleway", sans-serif;
     color: $text-grey;
     font-size: 16px;
     font-weight: bold;

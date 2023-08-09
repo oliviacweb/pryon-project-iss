@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../redux/slices/authSlice';
 import { RootState } from '../redux/store';
-import loginImage from '../assets/images/login-astronaut.png';
 import { Navigate } from "react-router-dom";
 import { signInWithGoogle, signInWithEmail } from '../services/auth';
 import { RiGoogleFill } from 'react-icons/ri';
 import { toast } from "react-toastify";
+import styles from '../styles/pages/LoginPage.module.scss';
 
 const LoginPage: React.FC = () => {
     const dispatch = useDispatch();
     const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,7 +36,6 @@ const LoginPage: React.FC = () => {
             console.log(error);
             toast.error("Something went wrong, try again!");
         }
-
     };
 
     // Redirect to Profile Page if authenticated
@@ -45,10 +44,10 @@ const LoginPage: React.FC = () => {
     }
 
     return (
-        <div className="flex">
-            {/* Image */}
-            <img src={loginImage} alt="Login" className="h-screen w-full" />
-            <div className="p-20 w-full max-w-2xl flex flex-col justify-center">
+        <div className="flex w-screen h-screen">
+            {/* Astronaut Image */}
+            <div className={styles.image} />
+            <div className="p-20 w-3xl flex flex-col justify-center">
                 <h1 className="title">Welcome, Space Traveler!</h1>
                 <p className="subtitle">Please Sign In To Continue</p>
                 <form onSubmit={handleSubmit} className="my-5">
@@ -59,6 +58,7 @@ const LoginPage: React.FC = () => {
                             value={username}
                             onChange={e => setUsername(e.target.value)}
                             className="mt-1 mb-2"
+                            placeholder="Username"
                         />
                     </label>
                     <label>
@@ -68,6 +68,7 @@ const LoginPage: React.FC = () => {
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             className="mt-1"
+                            placeholder="Password"
 
                         />
                     </label>

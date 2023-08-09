@@ -56,7 +56,7 @@ export default function SideBar() {
             ))}
 
             {/* Logout */}
-            <div role="button" onClick={handleLogout} className={styles.link}>
+            <div role="button" onClick={handleLogout} className={`${styles.link} mt-auto`}>
                 <RiLogoutBoxFill /> Logout
             </div >
         </div>
